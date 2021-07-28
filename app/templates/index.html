@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud com python</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Crud com python</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a class="btn btn-success" href="form/">Adicionar</a>
+    </div>
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <form method="get">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar...">
+        </form>
+    </div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+
+        <table class="table">
+            <thead class="thead bg-dark text-white">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dbs in db %}
+                <tr>
+                    <th scope="row">{{dbs.id}}</th>
+                    <td>{{dbs.modelo}}</td>
+                    <td>{{dbs.marca}}</td>
+                    <td>{{dbs.ano}}</td>
+                    <td><a class="btn btn-dark" href="view/{{dbs.id}}">Visualizar</a>
+                        <a class="btn btn-primary" href="edit/{{dbs.id}}">Editar</a>
+                        <a class="btn btn-danger btnDel" href="/delete/{{dbs.id}}">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    {% load static %}
+    <script src="{% static 'index.js' %}"></script>
+</body>
+</html>
